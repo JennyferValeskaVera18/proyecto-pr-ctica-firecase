@@ -26,5 +26,16 @@ signinForm.addEventListener('submit', async (e) => {
     }
     catch (error) {
         console.log(error);
+        if(error.code === "auth/wrong-password") {
+            showMessage("Wrong password", "red") //coloco los argumentos de las variables de la función
+        }
+        else if (error.code === "auth/user-not-found") {
+            //alert("Weak password");
+            showMessage("User not found", "red")
+        }
+        else {
+            //alert("Something went wrong :( ");
+            showMessage("Something went wrong", "red")
+        }
     }
 });

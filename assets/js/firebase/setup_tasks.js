@@ -5,19 +5,25 @@ const tasksContainer = document.getElementById("tasks-container");
 
 let id = "";
 let editStatus = false;
+let userGlobAL;
 
-window.addEventListener("DOMContentLoaded", () => {
+export default function setUpTasks(user)  {
+    userGlobAL = user;
+
     onGetTask((querySnapshot) => {
         let html = '';
 
         // READ
         querySnapshot.forEach(doc => {
             const data = doc.data();
+            
 
             html += `
                 <div class="card mb-3">
                     <div class="card-body">
+                        <h6 class ="text-right"> ${data.userName}<h6/>
                         <h4 class="card-title">${data.title}</h4>
+                        <p class="opacity-75"> ${data.date} ${data.time}<p/>
                         <p class="card-text">${data.description}</p>
                         <div class="row">
                             <button class='btn btn-danger btn-delete-custom mx-auto col-5' data-id='${doc.id}'>Delete</button>
@@ -53,21 +59,30 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 taskForm ["btn-task-save"].innerHTML = "Update";
                 //task
-            } )
-        })
-    })
-});
+            });
+        });
+    });
+};
 
 // CREATE
 taskForm.addEventListener("submit", (e) => {
     // Evitamos que recargue la pagina
     e.preventDefault();
+    
+    //Fecha
+ 
+    const fullDate = new Date();
+    const date = getFormattedDate(fullDate);
+    const time = getFormattedTime(fullDate);
+    
+    //Obtenemos el nombre
+    const userName = userGlobAL.displayName;
 
     const title = taskForm["task-title"].value;
     const description = taskForm["task-content"].value;
     //Si no estoy editando el boton sirve para crear 
     if (!editStatus) {
-        createTask(title, description);
+        createTask(title, description, userName, date, time);
     }
     else {
         updateTask( id, ({
@@ -83,4 +98,28 @@ taskForm.addEventListener("submit", (e) => {
     }
     taskForm.reset();
 });
+
+function getFormattedDate(date) {
+    var year = date.getFullYear();
+  
+    var month = (1 + date.getMonth()).toString();
+    month = month.length > 1 ? month : '0' + month;
+  
+    var day = date.getDate().toString();
+    day = day.length > 1 ? day : '0' + day;
     
+    return day + '/' + month + '/' + year;
+  }
+
+  function getFormattedTime(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+
+    if (hours < 10) {
+        hours = "0" + hour;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    return hours + ":" + minutes;
+  }

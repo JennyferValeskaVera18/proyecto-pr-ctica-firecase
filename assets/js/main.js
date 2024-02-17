@@ -5,7 +5,6 @@ import { loginCheck } from "./firebase/login_check.js";
 import './firebase/signup_form.js';
 import './firebase/signin_form.js';
 import './firebase/google_login.js';
-import './firebase/setup_tasks.js';
 import './firebase/logout.js';
 
 onAuthStateChanged(auth, async (user) => 
@@ -13,6 +12,8 @@ onAuthStateChanged(auth, async (user) =>
     // Si ha ingresado
     if (user) {
         loginCheck(user);
+        import("./firebase/setup_tasks.js") 
+        .then(({default: setUpTasks}) => setUpTasks(user));
     }
     // Si ha salido
     else {
