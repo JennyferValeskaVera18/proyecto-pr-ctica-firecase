@@ -21,10 +21,13 @@ export default function setUpTasks(user)  {
             html += `
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h6 class ="text-right"> ${data.userName}<h6/>
+                        <h6 class ="text-right fs-3 text"> ${data.userName}<h6/>
+                        <p class="opacity-75 fs-6 p-secondary"> ${data.date} ${data.time}<p/>
                         <h4 class="card-title">${data.title}</h4>
-                        <p class="opacity-75"> ${data.date} ${data.time}<p/>
-                        <p class="card-text">${data.description}</p>
+                        <div class="border border-transparent shadow p-3 mb-5 bg-body rounded">
+                           <p class="card-text m-1">${data.description}</p>
+                        </div>
+                
                         <div class="row">
                             <button class='btn btn-danger btn-delete-custom mx-auto col-5' data-id='${doc.id}'>Delete</button>
                             <button class='btn btn-info btn-edit-custom mx-auto col-5' data-id='${doc.id}'>Edit</button>
