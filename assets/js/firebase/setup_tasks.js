@@ -26,8 +26,8 @@ export default function setUpTasks(user)  {
                         <p class="opacity-75"> ${data.date} ${data.time}<p/>
                         <p class="card-text">${data.description}</p>
                         <div class="row">
-                            <button class='btn btn-danger btn-delete-custom mx-auto col-5' data-id='${doc.id}'>Delete</button>
-                            <button class='btn btn-info btn-edit-custom mx-auto col-5' data-id='${doc.id}'>Edit</button>
+                            <button class='btn btn-danger btn-delete-custom mx-auto col-5' data-id='${doc.id}'>🗑 Eliminar</button>
+                            <button class='btn btn-info btn-edit-custom mx-auto col-5' data-id='${doc.id}'>🖉 Editar</button>
                         </div>
                     </div>
                 </div>

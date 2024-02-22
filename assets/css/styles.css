@@ -1,4 +1,17 @@
+@import url('https://fonts.cdnfonts.com/css/caramel-sweets');
+@import url('https://fonts.cdnfonts.com/css/typewriter-condensed');
+
 body {
     background: #202020;
     color: white;
-  }
+}
+
+#titulo-principal {
+  font-family: 'Caramel Sweets', sans-serif;
+  font-size: 50px;
+  
+}
+
+#task-main-container {
+  font-family: 'Typewriter_Condensed_Demi', sans-serif;
+}
