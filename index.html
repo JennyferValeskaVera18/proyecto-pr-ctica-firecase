@@ -32,23 +32,41 @@
       </div>
     </div>
   </nav>
-  <h1 class="container ">Autenticación con Firebase</h1>
+  <h1 class="container p-4" id="titulo-principal">Autenticación con Firebase</h1>
+  <main id="task-main-container">
+    <div class="container p-4 text-dark">
+      <div class="row" id="task-form-container">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body"  id="create-tasks">
+              <h1 class="h4">Agregar tarea</h1>
+              <form id="create-form">
+                <label for="task-title">Titulo:</label>
+                <input
+                  type="text"
+                  id="task-title"
+                  class="form-control mb-3"
+                  class="My First Title"
+                  placeholder="Titulo de tarea"
+                  autofocus
+                />
+                <label for="task-content">Contenido:</label>
+                <textarea
+                  id="task-content"
+                  rows="3"
+                  class="form-control mb-3"
+                  placeholder="contenido de tarea"
+                ></textarea>
 
-  <main class="row w-75 mx-auto" id="task-main-container">
-    <div class="col-md-6" id="task-form-container">
-      <div id="create-tasks">
-        <form id="create-form">
-          <label for="task-title">Title:</label>
-          <input type="text" id="task-title" />
-          <label for="task-content">Content:</label>
-          <textarea id="task-content" cols="30" rows="5"></textarea>
-          <button type="submit" id="btn-task-save">Create Task</button>
-        </form>
+                <button class="btn btn-primary" id="btn-task-save">Guardar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Acá se mostrarán las tasks de la base de datos -->
+        <div class="col-md-6" id="tasks-container"></div>
       </div>
     </div>
-  
-    <!-- Acá se mostrarán las tasks de la base de datos -->
-    <div class="col-md-6" id="tasks-container"></div>
   </main>
 
   <!-- Signin modal -->
